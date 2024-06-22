@@ -1,3 +1,5 @@
+## Repo management
+
 To activate this environment, use
 
      $ conda activate bounding_box_detection_ham10000_torch
@@ -12,4 +14,12 @@ To recreate the environment, use
 
 To export environment, use
 
-    $ conda env export > environment.yml
+    $ conda env export --from-history > environment.yml
+
+## Notebook descriptions
+
+1. [Basic ConvNN](./1_basic.ipynb) - a basic neural network using SmoothL1Loss. 
+One of the observations here is that the code spends a lot of time in the cpu because of data loading.
+Next notebook will contain an experiment to alleviate that issue.
+
+
