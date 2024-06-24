@@ -1,3 +1,5 @@
+import os
+
 import torch
 
 
@@ -11,7 +13,7 @@ class EarlyStopping:
         self.early_stop = False
         self.val_loss_min = float("inf")
 
-    def __call__(self, val_loss: float, model: torch.nn.Module, path: str = "checkpoint.pt"):
+    def __call__(self, val_loss: float, model: torch.nn.Module, path: str):
         score = -val_loss
 
         if self.best_score is None:

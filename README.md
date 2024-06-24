@@ -20,6 +20,6 @@ To export environment, use
 
 1. [Basic ConvNN](./1_basic.ipynb) - a basic neural network using SmoothL1Loss. 
 One of the observations here is that the code spends a lot of time in the cpu because of data loading.
-Next notebook will contain an experiment to alleviate that issue.
+Perhaps the network itself is so small that the DataLoader can't keep up with the training.
 
 
