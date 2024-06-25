@@ -35,9 +35,10 @@ def save_images_with_bboxes(
     model: torch.nn.Module,
     test_loader: DataLoader,
     device: torch.device,
-    dataset: CocoDetectionWithFilenames
+    dataset: CocoDetectionWithFilenames,
+    output_dir_category: str
 ) -> None:
-    output_dir = os.path.join("data", "1_basic_output_imgs")
+    output_dir = os.path.join("data", output_dir_category)
 
     os.makedirs(output_dir, exist_ok=True)
     model.eval()
