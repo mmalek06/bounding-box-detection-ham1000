@@ -18,7 +18,7 @@ def get_loaders(
         ann_file: str,
         num_workers: int = 2,
         prefetch_factor: int = 2
-) -> tuple[CocoDetection, DataLoader, DataLoader, DataLoader]:
+) -> tuple[CocoDetection, DataLoader, DataLoader]:
     transform = transforms.Compose([
         transforms.ToTensor()
     ])
@@ -27,10 +27,9 @@ def get_loaders(
         ann_file=ann_file,
         transform=transform
     )
-    train_size = int(0.7 * len(dataset))
-    valid_size = int(0.15 * len(dataset))
-    test_size = len(dataset) - train_size - valid_size
-    train_dataset, valid_dataset, test_dataset = torch.utils.data.random_split(dataset, [train_size, valid_size, test_size])
+    train_size = int(0.85 * len(dataset))
+    valid_size = len(dataset) - train_size
+    train_dataset, valid_dataset = torch.utils.data.random_split(dataset, [train_size, valid_size])
     train_loader = torch.utils.data.DataLoader(
         train_dataset,
         batch_size=32,
@@ -47,12 +46,5 @@ def get_loaders(
         pin_memory=True,
         prefetch_factor=prefetch_factor
     )
-    test_loader = torch.utils.data.DataLoader(
-        train_dataset,
-        batch_size=32,
-        shuffle=False,
-        num_workers=num_workers,
-        pin_memory=True
-    )
 
-    return dataset, train_loader, valid_loader, test_loader
+    return dataset, train_loader, valid_loader
