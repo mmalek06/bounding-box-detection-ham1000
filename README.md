@@ -26,7 +26,8 @@ notebook, and the differing factor is the number of kernels in each layer. That 
 as now the loss is slightly smaller.
 3. [Basic, bigger, using CIoU](./3_bigger_basic_ciou.ipynb) - again, the same architecture, but different
 loss function. CIoU is a more advanced loss calculation method for bounding box regression.
-4. [Comparison](./tbd) - comparison between bounding boxes detected by each neural network.
+4. [Comparison](./4_test_basic_vs_ciou.ipynb) - comparison between bounding boxes detected by each neural network.
+That will drive the next steps.
 
 ## Other notebook descriptions
 
