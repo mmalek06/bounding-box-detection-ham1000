@@ -18,6 +18,7 @@ To export environment, use
 
 ## Main notebook descriptions
 
+0. [Runner](./runner.py) - management script to enable proper statistical testing
 1. [Basic ConvNN](./1_basic.ipynb) - a basic neural network using SmoothL1Loss. 
 One of the observations here is that the code spends a lot of time in the cpu because of data loading.
 The reason was that num_workers param has been so with a too large value.
