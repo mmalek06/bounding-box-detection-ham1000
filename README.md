@@ -18,16 +18,16 @@ To export environment, use
 
 ## Main notebook descriptions
 
-0. [Runner](./runner.py) - management script to enable proper statistical testing
-1. [Basic ConvNN](./1_basic.ipynb) - a basic neural network using SmoothL1Loss. 
+1. [Runner](./runner.py) - management script to enable proper statistical testing
+2. [Basic ConvNN](./1_basic.ipynb) - a basic neural network using SmoothL1Loss. 
 One of the observations here is that the code spends a lot of time in the cpu because of data loading.
 The reason was that num_workers param has been so with a too large value.
-2. [Basic, bigger ConvNN](./2_bigger_basic.ipynb) - architecture is basically the same as for the no. 1 
+3. [Basic, bigger ConvNN](./2_bigger_basic.ipynb) - architecture is basically the same as for the no. 1 
 notebook, and the differing factor is the number of kernels in each layer. That change seems to have helped
 as now the loss is slightly smaller.
-3. [Basic, bigger, using CIoU](./3_bigger_basic_ciou.ipynb) - again, the same architecture, but different
+4. [Basic, bigger, using CIoU](./3_bigger_basic_ciou.ipynb) - again, the same architecture, but different
 loss function. CIoU is a more advanced loss calculation method for bounding box regression.
-4. [Comparison](./4_test_basic_vs_ciou.ipynb) - comparison between bounding boxes detected by each neural network.
+5. [Comparison](./4_test_basic_vs_ciou.ipynb) - comparison between bounding boxes detected by each neural network.
 That will drive the next steps.
 
 ## Other notebook descriptions
