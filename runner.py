@@ -1,8 +1,6 @@
-import asyncio
 import os
 import subprocess
 import sys
-from asyncio import WindowsSelectorEventLoopPolicy
 from collections import defaultdict
 from pathlib import Path
 
@@ -55,6 +53,13 @@ def get_runs_data(allowed_files: set[str]) -> dict[str, int]:
     return run_data
 
 
+def save_run_data(run_file: str, run: int) -> None:
+    path = _get_runs_file_path(run_file)
+
+    with open(path, "w") as file:
+        file.write(str(run))
+
+
 load_dotenv()
 
 RUN_TIMES = int(os.getenv("RUN_TIMES"))
@@ -68,7 +73,7 @@ with tqdm(total=total_runs, desc="Processing Notebooks") as pbar:
         if run >= RUN_TIMES + 1:
             continue
 
-        for _ in range(RUN_TIMES - run + 1):
+        for counter in range(RUN_TIMES - run + 1):
             if should_exit(EXIT_FILE):
                 print('Exit file encountered, aborting...')
                 sys.exit(0)
@@ -80,5 +85,7 @@ with tqdm(total=total_runs, desc="Processing Notebooks") as pbar:
             os.environ["PYDEVD_DISABLE_FILE_VALIDATION"] = str(1)
 
             subprocess.run(command, shell=True)
-
+            save_run_data(notebook_path.split(os.sep)[-1], run + 1)
             pbar.update(1)
+
+            run += 1
